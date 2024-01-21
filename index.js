@@ -19,6 +19,8 @@ app.use(express.json())
 
 app.use('/api/ques', require('./routes/ques'))
 app.use('/api/auth', require('./routes/auth'))
+app.use('/',(req,res)=>{
+    res.json({"mesaage":"connected to server"});})
 
 
 
