@@ -12,7 +12,9 @@ const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 app.use(cors())
 
-
+app.use(cors({
+    origin: 'https://client-ai-iota.vercel.app/'
+}));
 app.use(express.json())
 
 //Available Routes:
