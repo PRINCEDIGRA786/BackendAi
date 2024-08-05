@@ -63,7 +63,7 @@ router.post('/createuser',
 
         catch (error) {
             console.error(error.message)
-            res.status(500).send("INTERNAL SERVER ERROR")
+            res.status(500).json({success:false,"result":"INTERNAL SERVER ERROR"})
         }
 
     })
@@ -117,7 +117,7 @@ router.post('/login', [
 
     } catch (error) {
         console.error(error.message);
-        res.status(500).send("Internal Server Error");
+        res.status(500).json({success:false,"result":"INTERNAL SERVER ERROR"});
     }
 
 
@@ -130,10 +130,10 @@ router.post('/getuser', fetchuser, async (req, res) => {
     try {
         userId = req.user.id;
         const user = await User.findById(userId).select("-password")
-        res.send(user)
+        res.json({success:true,"result":user})
     } catch (error) {
         console.error(error.message);
-        res.status(500).send("Internal Server Error");
+        res.status(500).json({success:false,"result":"INTERNAL SERVER ERROR"});
     }
 })
 module.exports = router
